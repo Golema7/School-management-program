@@ -1,0 +1,146 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace School_management
+{
+    internal class SchoolSystem
+    {
+        private static List<string> students = new List<string>();
+
+        public static void ManageStudents()
+        {
+            while (true)
+            {
+                Console.Write(@"
+                                ================================
+                                        STUDENT MANAGEMENT
+                                ================================
+
+                                        1. Add Student
+                                        2. Remove Student
+                                        3. View Students
+                                        4. Return to Main Menu
+
+                                Choose an option (.. to go back): ");
+
+                int input = int.Parse(Console.ReadLine());
+
+
+                while (true)
+                {
+                    if (input < 1 || input > 4)
+                    {
+                        Console.WriteLine("Enter a number between 1-4!");
+                        input = int.Parse(Console.ReadLine());
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (input == 1)
+                {
+
+                    Console.WriteLine("Enter the names of the students you want to add:");
+                    while (true)
+                    {
+                        string addStudentName = Console.ReadLine();
+
+                        if (addStudentName != "..")
+                        {
+                            students.Add(addStudentName);
+                            Console.WriteLine($"{addStudentName} has been added!");
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+                }
+
+                if (input == 2)
+                {
+                    Console.WriteLine("Enter the names of the students you want to remove: ");
+                    while (true)
+                    {
+                        string removeStudentName = Console.ReadLine();
+                        if (removeStudentName != "..")
+                        {
+                            students.Remove(removeStudentName);
+                            Console.WriteLine($"{removeStudentName} has been removed!");
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                if (input == 3)
+                {
+                    foreach (var student in students)
+                    {
+                        Console.WriteLine(student);
+                    }
+                }
+                if (input == 4)
+                {
+                    break;
+                }
+            }
+            
+        }
+        
+
+        static void Main(string[] args)
+        {
+            /*School management programm
+             * Functions:
+                Students - Adding, Removing
+                Teachers - Adding, Removing
+                Subjects - Assinging subjects into classes
+                Grades - Store and calculate student grades
+                Attendance - Mark students as attending/absent
+            */
+
+            Console.Write(@"
+                                =================================
+                                    SCHOOL MANAGEMENT SYSTEM
+                                =================================
+
+                                       1. Manage Students
+                                       2. Manage Teachers
+                                       3. Manage Classes
+                                       4. Manage Subjects
+                                       5. Manage Grades
+                                       6. Exit
+
+                                Choose an option: "
+            );
+
+            int input = int.Parse(Console.ReadLine());
+
+            while (true)
+            {
+                if (input < 1 || input > 6)
+                {
+                    Console.WriteLine("Enter a number between 1-6!");
+                    input = int.Parse(Console.ReadLine());
+                }
+                else
+                {
+                    break;
+                }
+            }
+            if (input == 1)
+            {
+                ManageStudents();
+            }
+            
+        }
+    }
+}
